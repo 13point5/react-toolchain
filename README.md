@@ -9,5 +9,5 @@
 2. Run this command inside your app's root directory. Note: this command executes the `toolchain.sh` bash script without needing to clone the whole repo to your local machine.
 
    ```bash
-   exec 3<&1;bash <&3 <(curl https://raw.githubusercontent.com/13point5/react-toolchain/toolchain.sh 2> /dev/null)
+   exec 3<&1;bash <&3 <(curl https://raw.githubusercontent.com/13point5/react-toolchain/main/toolchain.sh 2> /dev/null)
    ```
