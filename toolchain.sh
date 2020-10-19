@@ -53,7 +53,7 @@ finished=false
 
 # Max Line Length Prompt
 while ! $finished; do
-  read -p "What max line length do you want to set for ESLint and Prettier? (Recommendation: 100)"
+  read -p "What max line length do you want to set for ESLint and Prettier? "
   if [[ $REPLY =~ ^[0-9]{2,3}$ ]]; then
     max_len_val=$REPLY
     finished=true
@@ -98,16 +98,17 @@ echo
 $pkg_cmd -D eslint-config-prettier eslint-plugin-prettier
 
 eslint_file=".eslintrc${config_extension}"
-eslint_config="https://raw.githubusercontent.com/13point5/react-toolchain/main/config/eslintrc"
+eslint_config_file="https://raw.githubusercontent.com/13point5/react-toolchain/main/config/eslintrc"
 
 if [ "$skip_eslint_setup" == "true" ]; then
   break
 else
   echo
   echo -e "4/4 ${YELLOW}Building your ${eslint_file} file...${NC}"
-  > $eslint_file # truncates existing file (or creates empty)
+  true > $eslint_file # truncates existing file (or creates empty)
 
-  curl "${config_opening}\n${eslintrc_config}" >> $eslint_file
+  eslint_config=$(curl $eslint_config_file)
+  echo "${config_opening}${eslint_config}" >> $eslint_file
 fi
 
 echo
