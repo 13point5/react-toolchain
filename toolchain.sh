@@ -104,9 +104,10 @@ if [ "$skip_eslint_setup" == "true" ]; then
   break
 else
   echo
-  echo -e "4/4 ${YELLOW}Building your ${eslint_file} file...${NC}" > $eslint_file # truncates existing file (or creates empty)
+  echo -e "4/4 ${YELLOW}Building your ${eslint_file} file...${NC}"
+  > $eslint_file # truncates existing file (or creates empty)
 
-  curl $eslintrc_config >> $eslint_file
+  curl "${config_opening}\n${eslintrc_config}" >> $eslint_file
 fi
 
 echo
