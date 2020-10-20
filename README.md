@@ -11,3 +11,8 @@
    ```bash
    exec 3<&1;bash <&3 <(curl https://raw.githubusercontent.com/13point5/react-toolchain/main/toolchain.sh 2> /dev/null)
    ```
+
+3. You can also add this as an alias.
+   ```bash
+   alias rchain="exec 3<&1;bash <&3 <(curl https://raw.githubusercontent.com/13point5/react-toolchain/main/toolchain.sh 2> /dev/null)"
+   ```
