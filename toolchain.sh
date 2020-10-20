@@ -116,7 +116,7 @@ else
     curr_config_url="${config_base_url}.${config}rc"
     
     echo
-    echo -e "$YELLOW}Building your ${curr_config} file...${NC}"
+    echo -e "${YELLOW}Building your ${curr_config} file...${NC}"
     true > $curr_config
 
     curr_config_content=$(curl $curr_config_url)
