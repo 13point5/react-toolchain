@@ -82,33 +82,42 @@ echo
 echo -e "${GREEN}Configuring your development environment... ${NC}"
 
 echo
-echo -e "1/4 ${LCYAN}ESLint & Prettier Installation... ${NC}"
+echo -e "${LCYAN}ESLint & Prettier Installation... ${NC}"
 echo
 $pkg_cmd -D eslint prettier eslint-plugin-react-hooks
 
 echo
-echo -e "2/4 ${YELLOW}Conforming to Airbnb's JavaScript Style Guide... ${NC}"
+echo -e "${LCYAN}Conforming to Airbnb's JavaScript Style Guide... ${NC}"
 echo
 $pkg_cmd -D eslint-config-airbnb eslint-plugin-jsx-a11y eslint-plugin-import eslint-plugin-react babel-eslint
 
 echo
-echo -e "3/4 ${LCYAN}Making ESlint and Prettier play nice with each other... ${NC}"
+echo -e "${LCYAN}Making ESlint and Prettier play nice with each other... ${NC}"
 echo "See https://github.com/prettier/eslint-config-prettier for more details."
 echo
 $pkg_cmd -D eslint-config-prettier eslint-plugin-prettier
 
-eslint_file=".eslintrc${config_extension}"
-eslint_config_file="https://raw.githubusercontent.com/13point5/react-toolchain/main/config/eslintrc"
+config_base_url="https://raw.githubusercontent.com/13point5/react-toolchain/main/config/"
+
+configs = ( eslint prettier husky lintstaged )
 
 if [ "$skip_eslint_setup" == "true" ]; then
   break
 else
-  echo
-  echo -e "4/4 ${YELLOW}Building your ${eslint_file} file...${NC}"
-  true > $eslint_file # truncates existing file (or creates empty)
 
-  eslint_config=$(curl $eslint_config_file)
-  echo "${config_opening}${eslint_config}" >> $eslint_file
+  for config in ${configs[@]}
+  do
+    curr_config=".${config}rc${config_extension}"
+    curr_config_url="${config_base_url}.${config}rc"
+    
+    echo
+    echo -e "$YELLOW}Building your ${curr_config} file...${NC}"
+    true > $curr_config
+
+    curr_config_content=$(curl $curr_config_url)
+    echo "${config_opening}${curr_config_content}" >> $curr_config
+  done
+
 fi
 
 echo
