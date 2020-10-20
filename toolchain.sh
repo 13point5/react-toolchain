@@ -99,7 +99,7 @@ $pkg_cmd -D eslint-config-prettier eslint-plugin-prettier
 
 config_base_url="https://raw.githubusercontent.com/13point5/react-toolchain/main/config/"
 
-configs = ( eslint prettier husky lintstaged )
+configs=( eslint prettier husky lintstaged )
 
 if [ "$skip_eslint_setup" == "true" ]; then
   break
