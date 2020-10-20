@@ -87,6 +87,11 @@ echo
 $pkg_cmd -D eslint prettier eslint-plugin-react-hooks
 
 echo
+echo -e "${LCYAN}Husky & Lint-Staged Installation... ${NC}"
+echo
+$pkg_cmd -D husky lint-staged
+
+echo
 echo -e "${LCYAN}Conforming to Airbnb's JavaScript Style Guide... ${NC}"
 echo
 $pkg_cmd -D eslint-config-airbnb eslint-plugin-jsx-a11y eslint-plugin-import eslint-plugin-react babel-eslint
