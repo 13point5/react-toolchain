@@ -98,6 +98,17 @@ else
     echo "${config_opening}${curr_config_content}" >> $curr_config
   done
 
+  # jsconfig
+  curr_config="jsconfig.json"
+  curr_config_url="${config_base_url}${curr_config}"
+
+  echo
+  echo -e "${YELLOW}Building your ${curr_config} file...${NC}"
+  true > $curr_config
+
+  curr_config_content=$(curl $curr_config_url)
+  echo "${curr_config_content}" >> $curr_config
+
 fi
 
 echo
