@@ -6,5 +6,8 @@
     "node": true,
     "es6": true
   },
-  "plugins": ["prettier", "react", "react-hooks"]
+  "plugins": ["prettier", "react", "react-hooks"],
+  "rules": {
+    "react/react-in-jsx-scope": false
+  }
 }
